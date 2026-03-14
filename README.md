@@ -4,7 +4,7 @@ This project demonstrates a simple DevOps architecture using Docker and Docker C
 
 ## Architecture
 
-User → NGINX → Application Container
+User → NGINX → Application → MySQL Database
 
 ## Technologies
 
@@ -12,6 +12,7 @@ User → NGINX → Application Container
 - Docker Compose
 - NGINX
 - Node.js
+- MySQL
 
 ## Project Structure
 

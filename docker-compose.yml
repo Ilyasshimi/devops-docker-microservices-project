@@ -12,3 +12,10 @@ services:
     image: nginx
     ports:
       - "8080:80"
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
