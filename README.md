@@ -4,7 +4,6 @@ This project demonstrates a simple DevOps architecture using Docker and Docker C
 
 ## Architecture
 
-![Architecture](architecture.png)
 User → NGINX → Application Container
 
 ## Technologies
@@ -16,7 +15,10 @@ User → NGINX → Application Container
 
 ## Project Structure
 
-docker-compose.yml
+devops-docker-nginx-project
+│
+├── docker-compose.yml
+└── README.md
 
 ## Run the project
 
@@ -24,4 +26,4 @@ docker-compose up -d
 
 ## Access the application
 
-http://SERVER_IP:8080
+http://localhost:8080
