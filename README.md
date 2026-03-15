@@ -17,12 +17,20 @@ All services run in containers using Docker.
 
 ## Architecture
 
-User → Frontend → Backend API → MySQL
+User
+  |
+  v
+Frontend (NGINX)
+  |
+  v
+Backend API (Node.js)
+  |
+  v
+MySQL Database
 
-Monitoring stack:
-
-Prometheus → Metrics
-Grafana → Dashboards
+Monitoring
+ ├ Prometheus
+ └ Grafana
 
 ---
 
