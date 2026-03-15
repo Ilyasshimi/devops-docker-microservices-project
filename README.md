@@ -42,6 +42,12 @@ Monitoring
 
 ---
 
+## Architecture Diagram
+
+![Architecture](architecture-diagram.png)
+
+---
+
 # Technologies Used
 
 * Docker
