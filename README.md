@@ -1,42 +1,28 @@
-# DevOps Docker Monitoring Project
+# DevOps Microservices Project (Docker)
 
 ## Overview
 
-This project demonstrates a simple DevOps architecture using containerized services.
-The stack includes a reverse proxy, a web application, a database, and a monitoring system.
+This project shows a simple DevOps architecture using containers.
 
-All services run using Docker containers and are orchestrated with Docker Compose.
+The system runs multiple services with Docker Compose:
+
+* Frontend (NGINX)
+* Backend API (Node.js)
+* Database (MySQL)
+* Monitoring (Prometheus + Grafana)
+
+All services run in containers using Docker.
 
 ---
 
 ## Architecture
 
-```
-                 +--------+
-                 |  User  |
-                 +--------+
-                      |
-                      v
-                 +--------+
-                 | NGINX  |
-                 +--------+
-                      |
-                      v
-               +-------------+
-               | Application |
-               |  (Node.js)  |
-               +-------------+
-                      |
-                      v
-               +-------------+
-               |   MySQL     |
-               +-------------+
+User → Frontend → Backend API → MySQL
 
- Monitoring Stack
- -----------------------------
- | Prometheus  |   Grafana   |
- -----------------------------
-```
+Monitoring stack:
+
+Prometheus → Metrics
+Grafana → Dashboards
 
 ---
 
@@ -52,124 +38,121 @@ All services run using Docker containers and are orchestrated with Docker Compos
 
 ---
 
-## Services
-
-| Service     | Description           | Port |
-| ----------- | --------------------- | ---- |
-| NGINX       | Reverse proxy server  | 8080 |
-| Application | Node.js container     | 3000 |
-| MySQL       | Database container    | 3306 |
-| Prometheus  | Monitoring system     | 9090 |
-| Grafana     | Monitoring dashboards | 3001 |
-
----
-
 ## Project Structure
 
 ```
-devops-docker-nginx-project/
+devops-project/
+│
+├── frontend/
+│   ├── Dockerfile
+│   └── index.html
+│
+├── backend/
+│   ├── Dockerfile
+│   └── server.js
 │
 ├── docker-compose.yml
 ├── README.md
-│
 └── screenshots/
-    ├── docker-ps.png
-    ├── app.png
-    ├── prometheus.png
-    └── grafana.png
 ```
 
 ---
 
-## Run The Project
+## Services and Ports
 
-Clone the repository:
+| Service     | Port |
+| ----------- | ---- |
+| Frontend    | 8080 |
+| Backend API | 4000 |
+| MySQL       | 3306 |
+| Prometheus  | 9090 |
+| Grafana     | 3001 |
 
-```
-git clone https://github.com/YOUR_USERNAME/devops-docker-nginx-project.git
-```
+---
 
-Go to the project folder:
+## Run the Project
 
-```
-cd devops-docker-nginx-project
-```
-
-Start the containers:
+Start the services:
 
 ```
 docker-compose up -d
 ```
 
+Check running containers:
+
+```
+docker ps
+```
+
+Stop the services:
+
+```
+docker-compose down
+```
+
 ---
 
-## Access the Services
+## Access the Application
 
-Application via NGINX:
-
-```
-http://localhost:8080
-```
-
-Application direct access:
+Frontend:
 
 ```
-http://localhost:3000
+http://SERVER_IP:8080
+```
+
+Backend API:
+
+```
+http://SERVER_IP:4000
 ```
 
 Prometheus:
 
 ```
-http://localhost:9090
+http://SERVER_IP:9090
 ```
 
 Grafana:
 
 ```
-http://localhost:3001
+http://SERVER_IP:3001
+```
+
+Default Grafana login:
+
+```
+username: admin
+password: admin
 ```
 
 ---
 
 ## Screenshots
 
-Add screenshots of the running containers and dashboards in the `screenshots` folder.
+### Containers Running
 
-Example screenshots:
+![Docker Containers](screenshots/01_docker_containers_running.png)
 
-* Docker containers running
-* Application page
-* Prometheus monitoring page
-* Grafana dashboard
+### Frontend
 
----
+![Frontend](screenshots/04_frontend_service.png)
 
-## DevOps Concepts Demonstrated
+### Backend API
 
-This project demonstrates several important DevOps practices:
+![Backend](screenshots/05_backend_api.png)
 
-* Containerized application deployment
-* Multi-service architecture
-* Reverse proxy configuration
-* Monitoring with Prometheus
-* Visualization with Grafana
-* Infrastructure defined with Docker Compose
+### Prometheus Monitoring
 
----
+![Prometheus](screenshots/06_prometheus_monitoring.png)
 
-## Future Improvements
+### Grafana Dashboard
 
-Possible improvements for this project:
-
-* Add CI/CD pipeline (GitHub Actions)
-* Add container health checks
-* Deploy the stack to a cloud environment
-* Implement logging stack (ELK or Loki)
+![Grafana](screenshots/07_grafana_dashboard.png)
 
 ---
 
 ## Author
 
-Ilyass Himi
+DevOps learning project.
 
-DevOps / Cloud Learning Project
+Built using Docker and microservices architecture.
