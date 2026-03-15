@@ -2,19 +2,21 @@ version: "3"
 
 services:
 
-  app:
-    image: node:18-alpine
-    command: sh -c "npx http-server -p 3000"
-    ports:
-      - "3000:3000"
-
-  nginx:
-    image: nginx
+  frontend:
+    build: ./frontend
+    restart: always
     ports:
       - "8080:80"
 
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "4000:4000"
+
   database:
     image: mysql:5.7
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
     ports:
@@ -22,10 +24,12 @@ services:
 
   prometheus:
     image: prom/prometheus
+    restart: always
     ports:
       - "9090:9090"
 
   grafana:
     image: grafana/grafana
+    restart: always
     ports:
       - "3001:3000"
