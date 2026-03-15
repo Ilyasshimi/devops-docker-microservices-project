@@ -1,40 +1,48 @@
-# DevOps Microservices Project (Docker)
+# DevOps Docker Microservices Project
 
 ## Overview
 
-This project shows a simple DevOps architecture using containers.
+This project demonstrates a simple DevOps microservices architecture using Docker and Docker Compose.
 
-The system runs multiple services with Docker Compose:
+The system includes multiple services running in containers:
 
 * Frontend (NGINX)
 * Backend API (Node.js)
-* Database (MySQL)
-* Monitoring (Prometheus + Grafana)
+* MySQL Database
+* Monitoring stack (Prometheus and Grafana)
 
-All services run in containers using Docker.
+The goal of this project is to practice containerization, service orchestration, and monitoring in a microservices environment.
 
 ---
 
-## Architecture
+# Architecture
 
+The application follows a microservices architecture.
+
+User requests go through the frontend service, which communicates with the backend API and database.
+
+Monitoring tools collect metrics from the services.
+
+```
 User
-  |
-  v
+ |
+ v
 Frontend (NGINX)
-  |
-  v
+ |
+ v
 Backend API (Node.js)
-  |
-  v
+ |
+ v
 MySQL Database
 
 Monitoring
  ├ Prometheus
  └ Grafana
+```
 
 ---
 
-## Technologies Used
+# Technologies Used
 
 * Docker
 * Docker Compose
@@ -46,27 +54,27 @@ Monitoring
 
 ---
 
-## Project Structure
+# Project Structure
 
 ```
-devops-project/
+devops-docker-microservices-project
 │
-├── frontend/
+├── frontend
 │   ├── Dockerfile
 │   └── index.html
 │
-├── backend/
+├── backend
 │   ├── Dockerfile
 │   └── server.js
 │
 ├── docker-compose.yml
 ├── README.md
-└── screenshots/
+└── screenshots
 ```
 
 ---
 
-## Services and Ports
+# Services and Ports
 
 | Service     | Port |
 | ----------- | ---- |
@@ -78,9 +86,19 @@ devops-project/
 
 ---
 
-## Run the Project
+# Prerequisites
 
-Start the services:
+Before running the project, make sure you have:
+
+* Docker
+* Docker Compose
+* Git
+
+---
+
+# Run the Project
+
+Start all services:
 
 ```
 docker-compose up -d
@@ -100,30 +118,30 @@ docker-compose down
 
 ---
 
-## Access the Application
+# Access the Services
 
-Frontend:
-
-```
-http://SERVER_IP:8080
-```
-
-Backend API:
+Frontend
 
 ```
-http://SERVER_IP:4000
+http://Localhost:8080
 ```
 
-Prometheus:
+Backend API
 
 ```
-http://SERVER_IP:9090
+http://Localhost:4000
 ```
 
-Grafana:
+Prometheus Monitoring
 
 ```
-http://SERVER_IP:3001
+http://Localhost:9090
+```
+
+Grafana Dashboard
+
+```
+http://Localhost:3001
 ```
 
 Default Grafana login:
@@ -135,32 +153,54 @@ password: admin
 
 ---
 
-## Screenshots
+# Screenshots
 
-### Containers Running
+## Running Containers
 
 ![Docker Containers](screenshots/01_docker_containers_running.png)
 
-### Frontend
+## Frontend Service
 
 ![Frontend](screenshots/04_frontend_service.png)
 
-### Backend API
+## Backend API
 
 ![Backend](screenshots/05_backend_api.png)
 
-### Prometheus Monitoring
+## Prometheus Monitoring
 
 ![Prometheus](screenshots/06_prometheus_monitoring.png)
 
-### Grafana Dashboard
+## Grafana Dashboard
 
 ![Grafana](screenshots/07_grafana_dashboard.png)
 
 ---
 
-## Author
+# What I Learned
+
+* Building Docker images using Dockerfile
+* Running multi-container applications with Docker Compose
+* Creating a simple microservices architecture
+* Monitoring containerized services using Prometheus and Grafana
+* Managing services and ports inside a container environment
+
+---
+
+# Future Improvements
+
+Possible improvements for this project:
+
+* Add CI/CD pipeline using GitHub Actions
+* Deploy the project to a cloud platform
+* Add container registry integration
+* Improve monitoring dashboards
+
+---
+
+# Author
+
+Ilyass Himi
 
 DevOps learning project.
 
-Built using Docker and microservices architecture.
